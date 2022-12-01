@@ -46,3 +46,10 @@ fun main(args: Array<String>) {
             print("Площадь треугольника = ${triangle(z, x, c)}")
         }
     }
+
+}
+fun circle(r: Double): Double {
+    var p = r
+    p *= PI * p
+    return p
+}
