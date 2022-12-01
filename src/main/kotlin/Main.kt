@@ -24,3 +24,25 @@ fun main(args: Array<String>) {
         var x = reader.nextDouble()
         print("Введите 3 сторону: ")
         var c = reader.nextDouble()
+        if (z > x) {
+            val t = z
+            z = x
+            x = t
+        }
+        if (z > c) {
+            val t = z
+            z = c
+            c = t
+        }
+        if (c < x) {
+            val t = c
+            c = x
+            x = t
+        }
+
+        if (z + x < c) {
+            print("Треугольника не существует")
+        } else {
+            print("Площадь треугольника = ${triangle(z, x, c)}")
+        }
+    }
