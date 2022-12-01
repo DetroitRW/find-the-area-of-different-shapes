@@ -53,3 +53,6 @@ fun circle(r: Double): Double {
     p *= PI * p
     return p
 }
+fun rectangle(a: Double, b: Double): Double {
+    return a * b
+}
