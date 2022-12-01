@@ -56,3 +56,7 @@ fun circle(r: Double): Double {
 fun rectangle(a: Double, b: Double): Double {
     return a * b
 }
+fun triangle(z: Double, x: Double, c: Double): Double {
+    val o = (z + x + c) / 2
+    return sqrt((o - z) * (o - x) * (o - c) * o)
+}
