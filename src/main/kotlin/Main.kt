@@ -24,7 +24,6 @@ fun main(args: Array<String>) {
         "t"-> triangleArea()
         else -> display("Неверный ввод!")
     }
-
 }
 
 fun circleArea() {
