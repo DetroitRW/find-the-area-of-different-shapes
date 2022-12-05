@@ -2,56 +2,54 @@ import java.util.Scanner
 import kotlin.math.PI
 import kotlin.math.sqrt
 
+fun display(text: String) {
+    print(text)
+}
+fun promtString(text: String) : String {
+    val reader = Scanner(System.`in`)
+    display(text)
+    return reader.next()
+}
+fun promtDouble(text: String) : Double {
+    val reader = Scanner(System.`in`)
+    display(text)
+    return reader.nextDouble()
+}
 fun main(args: Array<String>) {
-   val reader = Scanner(System.`in`)
-    print("Круг(c), прямоугольник(r) или треугольник(t): ")
-    val f = reader.next()
+    val f = promtString("Круг(c), прямоугольник(r) или треугольник(t): ")
 
-    if (f == "c" ) {
-        print("Введите радиус: ")
-        val r = reader.nextDouble()
-        println("Площадь круга = ${circle(r)}")
-    } else if (f == "r") {
-        print("Введите 1 сторону: ")
-        val a = reader.nextDouble()
-        print("Введите 2 сторону: ")
-        val b = reader.nextDouble()
-        print("Площадь прямоугольника = ${rectangle(a, b)}")
-    } else if (f == "t") {
-        print("Введите 1 сторону: ")
-        var z = reader.nextDouble()
-        print("Введите 2 сторону: ")
-        var x = reader.nextDouble()
-        print("Введите 3 сторону: ")
-        var c = reader.nextDouble()
-        if (z > x) {
-            val t = z
-            z = x
-            x = t
-        }
-        if (z > c) {
-            val t = z
-            z = c
-            c = t
-        }
-        if (c < x) {
-            val t = c
-            c = x
-            x = t
-        }
-
-        if (z + x < c) {
-            print("Треугольника не существует")
-        } else {
-            print("Площадь треугольника = ${triangle(z, x, c)}")
-        }
+    when(f) {
+        "c"-> circleArea()
+        "r"-> rectangleArea()
+        "t"-> triangleArea()
+        else -> display("Неверный ввод!")
     }
 
 }
+
+fun circleArea() {
+    val r = promtDouble("Введите радиус: ")
+    display("Площадь круга = ${circle(r)}")
+}
+
+fun rectangleArea() {
+    val a = promtDouble("Введите 1 сторону: ")
+    val b = promtDouble("Введите 2 сторону: ")
+    display("Площадь прямоугольника = ${rectangle(a, b)}")
+}
+
+fun triangleArea() {
+    val z = promtDouble("Введите 1 сторону: ")
+    val x = promtDouble("Введите 2 сторону: ")
+    val c = promtDouble("Введите 3 сторону: ")
+    if (z + x < c || z + c < x || x + c < z) {
+        display("Треугольника не существует")
+    } else {
+        display("Площадь треугольника = ${triangle(z, x, c)}")
+    }
+}
 fun circle(r: Double): Double {
-    var p = r
-    p *= PI * p
-    return p
+    return PI * r * r
 }
 fun rectangle(a: Double, b: Double): Double {
     return a * b
